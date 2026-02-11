@@ -10,8 +10,48 @@ import Header from "../components/Header.astro";
     <!-- Centered intro panel -->
     <section class="intro-wrapper">
       <div class="intro-panel">
-        <h2>AI &amp; Cloud Engineer for enterprise workloads.</h2>
+	  <!-- 🔹 NEW: tech icons row -->
+		<div class="intro-logos">
+		<img
+			src="/images/logos/azure.png"
+			alt="Microsoft Azure"
+		/>
+		<img
+			src="/images/logos/openai.png"
+			alt="Azure OpenAI"
+		/>
+		<img
+			src="/images/logos/aisearch.png"
+			alt="Azure AI Search"
+		/>
+		<img
+			src="/images/logos/aifoundry.png"
+			alt="Microsot AI Foundry"
+		/>
+		<img
+			src="/images/logos/postgresql.png"
+			alt="PostgreSQL"
+		/>
+		<img
+			src="/images/logos/powerautomate.png"
+			alt="Power Automate"
+		/>
+		<img
+			src="/images/logos/python.png"
+			alt="Python"
+		/>
+		<img
+			src="/images/logos/net.png"
+			alt=".Net"
+		/>
+		<img
+			src="/images/logos/365.png"
+			alt="Microsoft 365"
+		/>
+		</div>
 
+        <h2>AI &amp; Cloud Engineer for enterprise workloads.</h2>
+		
         <p class="intro-text">
           I design and build production-ready solutions across AI automation, backend APIs,
           Microsoft 365 platforms, and full-stack experiences. Over 6 years I’ve worked with
@@ -20,18 +60,45 @@ import Header from "../components/Header.astro";
         </p>
 
         <div class="intro-tags">
-          <span>AI Engineering</span>
-          <span>Backend APIs</span>
-          <span>Microsoft 365 &amp; Copilot</span>
-          <span>Full-Stack &amp; XR</span>
-        </div>
+		<span class="tag-pill">
+		<iconify-icon icon="lucide:brain-circuit"></iconify-icon>
+		AI Engineering
+		</span>
+		<span class="tag-pill">
+		<iconify-icon icon="lucide:server"></iconify-icon>
+		Backend APIs
+		</span>
+		<span class="tag-pill">
+		<iconify-icon icon="lucide:briefcase"></iconify-icon>
+		Microsoft 365 &amp; Copilot
+		</span>
+		<span class="tag-pill">
+		<iconify-icon icon="lucide:layers"></iconify-icon>
+		Full-Stack &amp; XR
+		</span>
+
+		</div>
+
+		<div class="intro-actions">
+		<a href="/cv/Shara-Mae-Ureta-CV.pdf"
+			target="_blank"
+			rel="noopener"
+			class="btn-primary">
+			Download CV
+		</a>
+		</div>
       </div>
     </section>
 
     <!-- Role cards -->
     <section class="grid">
-      <article class="card">
+      <div class="card-panel">
+	  	<div class="card-header">
+	  	<iconify-icon icon="lucide:brain-circuit" class="card-icon" style="font-size: 24px;"></iconify-icon>
         <h3>AI Engineer</h3>
+		</div>
+
+
         <p>
           Building intelligent pipelines with Azure OpenAI, AI Search, document processing,
           and agent-based orchestration to automate complex workflows.
@@ -41,10 +108,15 @@ import Header from "../components/Header.astro";
           <li>Document classification and extraction on Azure</li>
           <li>Agent-driven orchestration for laptop refresh initiatives</li>
         </ul>
-      </article>
+      </div>
 
-      <article class="card">
+      <div class="card-panel">
+	  	<div class="card-header">
+	  	<iconify-icon icon="lucide:server" class="card-icon" style="font-size: 24px;"></iconify-icon>
         <h3>Backend Engineer</h3>
+		</div>
+
+
         <p>
           Designing and implementing APIs, integration layers, and data services with
           observability and testing built-in.
@@ -54,10 +126,15 @@ import Header from "../components/Header.astro";
           <li>PostgreSQL and Azure Blob Storage for resilient data</li>
           <li>Deployments via Azure Functions and App Service</li>
         </ul>
-      </article>
+      </div>
 
-      <article class="card">
+      <div class="card-panel">
+	  	<div class="card-header">
+	  	<iconify-icon icon="lucide:briefcase" class="card-icon" style="font-size: 24px;"></iconify-icon>
         <h3>Microsoft 365 &amp; Automation</h3>
+		</div>
+
+
         <p>
           Leveraging Copilot Studio, Power Automate, SharePoint, and PVA to streamline
           enterprise processes and knowledge access.
@@ -67,10 +144,15 @@ import Header from "../components/Header.astro";
           <li>SharePoint-based dashboards and automation tools</li>
           <li>Notification engines and migration initiatives</li>
         </ul>
-      </article>
+      </div>
 
-      <article class="card">
+      <div class="card-panel">
+	  	<div class="card-header">
+	  	<iconify-icon icon="lucide:layers" class="card-icon" style="font-size: 24px;"></iconify-icon>
         <h3>Full-Stack &amp; XR</h3>
+		</div>
+
+
         <p>
           Delivering immersive and modern experiences from user interface through to
           cloud services.
@@ -80,7 +162,7 @@ import Header from "../components/Header.astro";
           <li>Metaverse POCs for environmental sustainability</li>
           <li>SharePoint &amp; Teams customisations for modern workplace</li>
         </ul>
-      </article>
+      </div>
     </section>
   </main>
 
@@ -93,7 +175,11 @@ import Header from "../components/Header.astro";
     gap: 2.5rem;
   }
 
-
+	.tag-pill {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.35rem;
+	}
 
   .grid {
     display: grid;
@@ -183,6 +269,67 @@ import Header from "../components/Header.astro";
 	background: rgba(15, 23, 42, 0.9);
 	color: #f9fafb;
 	letter-spacing: 0.03em;
+	}
+
+	.card-header {
+	display: flex;
+	align-items: center;
+	gap: 0.6rem;
+	}
+
+	.card-icon {
+	width: 20px;
+	height: 20px;
+	color: var(--accent);
+	flex-shrink: 0;
+	}
+
+	.intro-logos {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 1.4rem;
+	margin-bottom: 1.5rem;
+	}
+
+	.intro-logos img {
+	height: 34px;
+	width: auto;
+	opacity: 0.9;
+	filter: drop-shadow(0 6px 16px rgba(0, 0, 0, 0.35));
+	}
+
+	/* Slightly smaller on mobile */
+	@media (max-width: 600px) {
+	.intro-logos img {
+		height: 26px;
+	}
+	}
+
+	.intro-actions {
+	margin-top: 1.5rem;
+	display: flex;
+	justify-content: center;
+	}
+
+	.btn-primary {
+	padding: 0.6rem 1.4rem;
+	border-radius: 999px;
+	font-size: 0.85rem;
+	color: #fff;
+	border: 1px solid rgba(236, 95, 169, 0.7);
+	background: linear-gradient(
+		135deg,
+		rgba(236, 95, 169, 0.25),
+		rgba(236, 95, 169, 0.05)
+	);
+	box-shadow: 0 10px 30px rgba(236, 95, 169, 0.25);
+	transition: transform 0.2s ease, box-shadow 0.2s ease;
+	}
+
+	.btn-primary:hover {
+	transform: translateY(-1px);
+	box-shadow: 0 14px 36px rgba(236, 95, 169, 0.45);
 	}
 
 </style>

@@ -1,53 +1,80 @@
 ---
-const { title, client, role, tags = [], tech, summary } = Astro.props;
+const { title, icon, client, role, tech, summary, tags } = Astro.props;
 ---
 
 <article class="card-panel project-card">
-  <h3>{title}</h3>
-  <p class="project-meta">
-    <strong>{client}</strong> · {role}
-  </p>
+  <div class="project-title">
+    <iconify-icon
+        icon={icon ?? "lucide:folder-kanban"}
+        class="project-title-icon" style="font-size: 24px;"
+    ></iconify-icon>
+    <h3>{title}</h3>
+    </div>
+
+  <!-- Client + Role -->
+  <div class="project-meta">
+    <span>
+      <iconify-icon icon="lucide:building-2" style="font-size: 24px;"></iconify-icon>
+      {client}
+    </span>
+
+    <span>
+      <iconify-icon icon="lucide:user-cog" style="font-size: 24px;"></iconify-icon>
+      {role}
+    </span>
+  </div>
 
   <p class="project-summary">{summary}</p>
 
-  {tags.length > 0 && (
-    <div class="project-tags">
-      {tags.map((tag) => (
-        <span class="tag-pill">{tag}</span>
-      ))}
-    </div>
-  )}
+  <!-- Tech -->
+  <p class="project-tech">
+    <iconify-icon icon="lucide:cpu" style="font-size: 24px;"></iconify-icon>
+    {tech}
+  </p>
 
-  {tech && <p class="project-tech">{tech}</p>}
+  <!-- Tags -->
+  <div class="project-tags">
+    {tags.map((tag) => (
+      <span class="tag-pill">{tag}</span>
+    ))}
+  </div>
 </article>
 
 <style>
-  .project-card h3 {
-    margin-top: 0;
-    margin-bottom: 0.25rem;
-  }
-
   .project-meta {
-    margin: 0 0 0.75rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
     font-size: 0.85rem;
     color: var(--text-muted);
+    margin-bottom: 0.5rem;
+  }
+
+  .project-meta span,
+  .project-tech {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+  }
+
+  iconify-icon {
+    font-size: 1rem;
+    color: var(--accent);
   }
 
   .project-summary {
-    margin: 0 0 0.9rem;
+    margin: 0.75rem 0;
     color: var(--text-muted);
   }
-
-  .project-tags {
+  .project-title {
     display: flex;
-    flex-wrap: wrap;
-    gap: 0.4rem;
-    margin-bottom: 0.75rem;
-  }
+    align-items: center;
+    gap: 0.6rem;
+    }
 
-  .project-tech {
-    margin: 0;
-    font-size: 0.8rem;
-    color: var(--text-muted);
-  }
+    .project-title-icon {
+    font-size: 1.1rem;
+    color: var(--accent);
+    flex-shrink: 0;
+    }
 </style>

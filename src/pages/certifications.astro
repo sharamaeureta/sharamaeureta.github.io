@@ -1,0 +1,156 @@
+---
+import Layout from "../components/Layout.astro";
+import Header from "../components/Header.astro";
+
+const certifications = [
+  {
+    title: "Microsoft Certified: Azure AI Fundamentals",
+    provider: "Microsoft",
+    earned: "May 30, 2024",
+    status: "Active",
+    badge: "/images/certs/ms-fundamentals.svg",
+    credentialUrl: "https://learn.microsoft.com/api/credentials/share/en-us/SharaMaeUreta-3516/2B9BA0FFEE52372D?sharingId=B186B6F2703C444D", 
+  },
+  {
+    title: "Microsoft 365 Certified: Fundamentals",
+    provider: "Microsoft",
+    earned: "May 17, 2024",
+    status: "Active",
+    badge: "/images/certs/ms-fundamentals.svg",
+    credentialUrl: "https://learn.microsoft.com/api/credentials/share/en-us/SharaMaeUreta-3516/93C4699A13E74254?sharingId=B186B6F2703C444D", 
+  },
+  {
+    title: "Microsoft Certified: Power Platform Fundamentals",
+    provider: "Microsoft",
+    earned: "November 26, 2020",
+    status: "Active",
+    badge: "/images/certs/ms-fundamentals.svg",
+    credentialUrl: "https://learn.microsoft.com/api/credentials/share/en-us/SharaMaeUreta-3516/2499E694B0D8026A?sharingId=B186B6F2703C444D", 
+  },
+];
+---
+
+<Layout title="Certifications – Shara Mae">
+  <Header />
+
+  <main class="shell">
+    <!-- Top intro panel -->
+    <section class="panel-wrapper">
+      <div class="panel">
+        <h2>Certifications</h2>
+        <p class="cert-intro">
+          Microsoft certifications that back up my experience across Azure AI, Microsoft 365,
+          and Power Platform. All credentials are online-verifiable.
+        </p>
+      </div>
+    </section>
+
+    <!-- Certification cards -->
+    <section class="cert-grid">
+      {certifications.map((cert) => (
+        <article class="card-panel cert-card">
+          <div class="cert-header">
+            <img
+              src={cert.badge}
+              alt={`${cert.title} badge`}
+              class="cert-badge"
+            />
+            <div>
+              <p class="cert-label">Certification</p>
+              <h3>{cert.title}</h3>
+            </div>
+          </div>
+
+          <div class="cert-tags">
+            <span class="tag-pill cert-pill-online">Online verifiable</span>
+            <span class="tag-pill cert-pill-status">{cert.status}</span>
+          </div>
+
+          <p class="cert-earned">Earned on {cert.earned}</p>
+
+          <a
+            href={cert.credentialUrl}
+            target="_blank"
+            rel="noreferrer"
+            class="cert-link"
+          >
+            View certification details
+          </a>
+        </article>
+      ))}
+    </section>
+  </main>
+</Layout>
+
+<style>
+  .cert-intro {
+    margin-top: 0.5rem;
+    color: var(--text-muted);
+  }
+
+  .cert-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+  }
+
+  .cert-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .cert-header {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+  }
+
+  .cert-badge {
+    width: 64px;
+    height: 64px;
+    object-fit: contain;
+  }
+
+  .cert-label {
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    margin: 0 0 0.15rem;
+  }
+
+  .cert-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  /* Pills styled similar to your screenshot */
+  .cert-pill-online {
+    background: rgba(14, 165, 233, 0.15);
+    border-color: rgba(14, 165, 233, 0.5);
+  }
+
+  .cert-pill-status {
+    background: rgba(34, 197, 94, 0.15);
+    border-color: rgba(34, 197, 94, 0.6);
+  }
+
+  .cert-earned {
+    margin: 0;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+  }
+
+  .cert-link {
+    font-size: 0.9rem;
+  }
+
+  @media (max-width: 700px) {
+    .cert-header {
+      align-items: flex-start;
+    }
+  }
+</style>
