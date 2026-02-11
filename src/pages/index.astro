@@ -332,4 +332,53 @@ import Header from "../components/Header.astro";
 	box-shadow: 0 14px 36px rgba(236, 95, 169, 0.45);
 	}
 
+	@media (max-width: 768px) {
+	/* Bring the panel closer and give side padding */
+	.intro-wrapper {
+		margin: 1.5rem 0 2rem;
+		padding: 0 1rem;
+	}
+
+	.intro-panel {
+		padding: 1.5rem 1.25rem;
+		border-radius: 0.9rem;
+	}
+
+	/* Allow the logos to wrap and be smaller */
+	.intro-logos {
+		flex-wrap: wrap;
+		gap: 0.7rem;
+		margin-bottom: 1.1rem;
+	}
+
+	.intro-logos img {
+		height: 24px;  /* was ~34px */
+		filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.3));
+	}
+
+	/* Slightly smaller heading & body text for narrow screens */
+	.intro-panel h2 {
+		font-size: 1.25rem;
+	}
+
+	.intro-text {
+		font-size: 0.9rem;
+	}
+
+	/* Tags: tighter spacing so they don’t overflow */
+	.intro-tags {
+		gap: 0.4rem;
+	}
+
+	.intro-tags span {
+		padding: 0.3rem 0.8rem;
+		font-size: 0.7rem;
+	}
+
+	/* CV button spacing */
+	.intro-actions {
+		margin-top: 1.2rem;
+	}
+	}
+
 </style>
