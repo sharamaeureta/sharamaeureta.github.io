@@ -1,0 +1,92 @@
+---
+---
+
+<header class="shell header">
+  <div class="brand">
+    <img
+      src="/images/profile.jpg"
+      alt="Shara Mae"
+      class="brand-avatar"
+    />
+
+    <div class="brand-text">
+      <h1>Shara Mae Ureta - Portfolio</h1>
+      <p class="subtitle">
+        AI Engineer · Backend Engineer · Microsoft 365 Specialist · Full-Stack Developer
+      </p>
+    </div>
+  </div>
+
+  <nav class="nav">
+    <a href="/">Home</a>
+    <a href="/projects">Projects</a>
+    <a href="/contact">Contact</a>
+  </nav>
+</header>
+
+<style>
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 2.25rem;
+    }
+
+    .brand {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    }
+
+    .brand-avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 999px;
+    object-fit: cover;
+    border: 2px solid rgba(236, 95, 169, 0.6);
+    box-shadow: 0 10px 24px rgba(5, 6, 23, 0.95);
+    }
+
+
+    .brand-text h1 {
+    margin: 0;
+    font-size: 1.5rem;
+    }
+
+    .subtitle {
+    margin: 0.2rem 0 0;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    }
+
+
+  .nav {
+    display: flex;
+    gap: 1.25rem;
+    font-size: 0.95rem;
+  }
+
+  /* 🔥 FORCE nav link colors across ALL states */
+  :global(.nav a),
+  :global(.nav a:link),
+  :global(.nav a:visited),
+  :global(.nav a:hover),
+  :global(.nav a:active) {
+    color: var(--text-main);
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  :global(.nav a:hover) {
+    color: var(--accent);
+  }
+
+  @media (max-width: 720px) {
+    .header {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+</style>
+

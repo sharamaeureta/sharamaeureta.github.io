@@ -1,0 +1,53 @@
+---
+const { title, client, role, tags = [], tech, summary } = Astro.props;
+---
+
+<article class="card-panel project-card">
+  <h3>{title}</h3>
+  <p class="project-meta">
+    <strong>{client}</strong> · {role}
+  </p>
+
+  <p class="project-summary">{summary}</p>
+
+  {tags.length > 0 && (
+    <div class="project-tags">
+      {tags.map((tag) => (
+        <span class="tag-pill">{tag}</span>
+      ))}
+    </div>
+  )}
+
+  {tech && <p class="project-tech">{tech}</p>}
+</article>
+
+<style>
+  .project-card h3 {
+    margin-top: 0;
+    margin-bottom: 0.25rem;
+  }
+
+  .project-meta {
+    margin: 0 0 0.75rem;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+  }
+
+  .project-summary {
+    margin: 0 0 0.9rem;
+    color: var(--text-muted);
+  }
+
+  .project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .project-tech {
+    margin: 0;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+  }
+</style>

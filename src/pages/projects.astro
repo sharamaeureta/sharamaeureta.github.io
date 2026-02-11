@@ -1,0 +1,99 @@
+---
+import Layout from "../components/Layout.astro";
+import Header from "../components/Header.astro";
+import ProjectCard from "../components/ProjectCard.astro";
+
+const projects = [
+  {
+    title: "eFax Automation for Healthcare",
+    client: "Providence St. Joseph Health",
+    role: "Application Developer · Data Engineer · DevOps",
+    tags: ["AI Engineer", "Backend", "Healthcare"],
+    tech: "Python, FastAPI, Azure OpenAI, Azure AI Search, Azure AI Document Intelligence, PostgreSQL, Azure Blob Storage, pytest",
+    summary:
+      "Designed and implemented an AI-driven document ingestion and classification solution for healthcare eFax workflows. Built FastAPI services integrating document scanning, similarity search, and LLM-based extraction, with data stored securely in PostgreSQL and Azure Blob."
+  },
+  {
+    title: "Agentic AI Laptop Refresh",
+    client: "Qualcomm Inc.",
+    role: "Application Developer",
+    tags: ["AI Engineer", "Microsoft 365"],
+    tech: "Copilot Studio, Power Automate, ServiceNow, Adaptive Cards",
+    summary:
+      "Configured orchestration and connected agents in Copilot Studio to support laptop refresh journeys. Integrated Power Automate flows with ServiceNow, built Q&A and policy KB experiences, and delivered Adaptive Card-based UI for end-users."
+  },
+  {
+    title: "Metaverse & XR Initiatives",
+    client: "ATCP / Avanade CTO",
+    role: "XR Developer (Unity & Mesh)",
+    tags: ["Full-Stack", "XR"],
+    tech: "Unity, Microsoft Mesh, C#, Azure Services",
+    summary:
+      "Led XR projects including a mangrove restoration site using VR with Moon Phase and Tides API, and enterprise Metaverse POCs. Created reusable scripts, visual scripting, and cloud-connected experiences for sustainability-related scenarios."
+  },
+  {
+    title: "Modern Workplace Capability",
+    client: "Avanade",
+    role: "Trainer · O365 SME · Developer",
+    tags: ["Microsoft 365", "Automation"],
+    tech: "SharePoint Online, Power Automate, PVA, SPFx, OneDrive",
+    summary:
+      "Acted as main training coordinator and SME for Modern Workplace. Built internal tools including automated item count, email notification engines, and migration dashboards, plus chatbots using Power Virtual Agents integrated with Teams."
+  },
+  {
+    title: "Enterprise SharePoint & Web Migrations",
+    client: "NTT Data / BSP / ABS-CBN",
+    role: "Developer / Main Developer",
+    tags: ["Backend", "Microsoft 365"],
+    tech: "SharePoint On-Prem, SharePoint Online, Office 365, Web Development",
+    summary:
+      "Delivered multiple migrations from legacy systems and websites to SharePoint and Office 365. Implemented support modules, handled content migration, and ensured a stable and maintainable modern workplace platform."
+  }
+];
+---
+
+<Layout title="Projects – Shara Mae">
+  <Header />
+
+  <main class="shell">
+    <section class="panel-wrapper">
+    <div class="panel">
+      <h2>Selected projects</h2>
+      <p>
+        A sample of work across AI, backend, Microsoft 365, and full-stack/XR. These projects
+        focus on real enterprise use-cases with measurable impact and production-ready
+        implementations.
+      </p>
+    </div>
+    </section>
+    <section class="projects-grid">
+        {projects.map((project) => (
+          <ProjectCard {...project} />
+        ))}
+    </section>
+  </main>
+</Layout>
+
+<style>
+  h2 {
+    margin-bottom: 0.5rem;
+  }
+
+  .intro {
+    max-width: 640px;
+    color: var(--text-muted);
+    margin-bottom: 1.75rem;
+  }
+
+  .projects-grid {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  @media (max-width: 900px) {
+    .projects-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

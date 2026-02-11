@@ -1,17 +1,188 @@
 ---
-
+import Layout from "../components/Layout.astro";
+import Header from "../components/Header.astro";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout title="Shara Mae – AI & Cloud Engineer">
+  <Header />
+
+    <main class="shell main">
+    <!-- Centered intro panel -->
+    <section class="intro-wrapper">
+      <div class="intro-panel">
+        <h2>AI &amp; Cloud Engineer for enterprise workloads.</h2>
+
+        <p class="intro-text">
+          I design and build production-ready solutions across AI automation, backend APIs,
+          Microsoft 365 platforms, and full-stack experiences. Over 6 years I’ve worked with
+          global organisations in healthcare, modern workplace, and XR to ship secure,
+          maintainable systems on Azure.
+        </p>
+
+        <div class="intro-tags">
+          <span>AI Engineering</span>
+          <span>Backend APIs</span>
+          <span>Microsoft 365 &amp; Copilot</span>
+          <span>Full-Stack &amp; XR</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Role cards -->
+    <section class="grid">
+      <article class="card">
+        <h3>AI Engineer</h3>
+        <p>
+          Building intelligent pipelines with Azure OpenAI, AI Search, document processing,
+          and agent-based orchestration to automate complex workflows.
+        </p>
+        <ul>
+          <li>Healthcare eFax automation using LLMs and vector search</li>
+          <li>Document classification and extraction on Azure</li>
+          <li>Agent-driven orchestration for laptop refresh initiatives</li>
+        </ul>
+      </article>
+
+      <article class="card">
+        <h3>Backend Engineer</h3>
+        <p>
+          Designing and implementing APIs, integration layers, and data services with
+          observability and testing built-in.
+        </p>
+        <ul>
+          <li>Python FastAPI services with pytest test suites</li>
+          <li>PostgreSQL and Azure Blob Storage for resilient data</li>
+          <li>Deployments via Azure Functions and App Service</li>
+        </ul>
+      </article>
+
+      <article class="card">
+        <h3>Microsoft 365 &amp; Automation</h3>
+        <p>
+          Leveraging Copilot Studio, Power Automate, SharePoint, and PVA to streamline
+          enterprise processes and knowledge access.
+        </p>
+        <ul>
+          <li>Copilot Studio agents integrated with ServiceNow flows</li>
+          <li>SharePoint-based dashboards and automation tools</li>
+          <li>Notification engines and migration initiatives</li>
+        </ul>
+      </article>
+
+      <article class="card">
+        <h3>Full-Stack &amp; XR</h3>
+        <p>
+          Delivering immersive and modern experiences from user interface through to
+          cloud services.
+        </p>
+        <ul>
+          <li>Unity-based XR projects for retail and healthcare</li>
+          <li>Metaverse POCs for environmental sustainability</li>
+          <li>SharePoint &amp; Teams customisations for modern workplace</li>
+        </ul>
+      </article>
+    </section>
+  </main>
+
+</Layout>
+
+<style>
+  .main {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+  }
+
+
+
+  .grid {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .card {
+	background: linear-gradient(
+		180deg,
+		rgba(16, 19, 37, 0.98),
+		rgba(8, 10, 26, 0.95)
+	);
+	border-radius: 1rem;
+	padding: 1.7rem;
+	border: 1px solid rgba(148, 163, 184, 0.28);
+	transition: border-color 0.25s ease, transform 0.25s ease,
+		box-shadow 0.25s ease;
+	}
+
+	.card:hover {
+	border-color: rgba(236, 95, 169, 0.55);
+	box-shadow: 0 14px 40px rgba(5, 6, 23, 0.9);
+	transform: translateY(-2px);
+	}
+
+  .card h3 {
+    margin-top: 0;
+  }
+
+  .card p {
+    color: var(--text-muted);
+  }
+
+  .card ul {
+    margin-top: 0.75rem;
+    padding-left: 1.25rem;
+  }
+
+  @media (max-width: 900px) {
+    .grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* Centers the whole intro section in the page */
+	.intro-wrapper {
+	display: flex;
+	justify-content: center;
+	margin: 3rem 0 3.5rem;
+	}
+
+	/* The panel itself */
+	.intro-panel {
+	max-width: 780px;
+	width: 100%;
+	background: radial-gradient(circle at top, #151833 0%, #050617 80%);
+	border-radius: 1.1rem;
+	padding: 2rem 2.25rem;
+	text-align: center;
+	border: 1px solid rgba(236, 95, 169, 0.5);
+	box-shadow:
+		0 0 0 1px rgba(236, 95, 169, 0.15),
+		0 22px 55px rgba(5, 6, 23, 0.95);
+	}
+
+	/* Text */
+	.intro-text {
+	color: var(--text-muted);
+	line-height: 1.6;
+	margin: 0.75rem 0 1.4rem;
+	}
+
+	/* Tags */
+	.intro-tags {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.5rem;
+	justify-content: center;
+	}
+
+	.intro-tags span {
+	padding: 0.4rem 0.95rem;
+	border-radius: 999px;
+	font-size: 0.76rem;
+	border: 1px solid rgba(236, 95, 169, 0.45);
+	background: rgba(15, 23, 42, 0.9);
+	color: #f9fafb;
+	letter-spacing: 0.03em;
+	}
+
+</style>
