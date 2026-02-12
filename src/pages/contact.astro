@@ -12,23 +12,40 @@ import Header from "../components/Header.astro";
         <h2>Let’s connect</h2>
         <p class="contact-text">
           I’m open to opportunities around AI engineering, backend APIs, Microsoft 365
-          solutions, and full-stack projects – especially in healthcare, modern workplace,
-          and enterprise automation.
+          solutions – especially in healthcare, modern workplace, and enterprise automation.
         </p>
- 
+
         <div class="contact-items">
-          <div>
-            <h3>Email</h3>
-            <a href="mailto:sharamae.ureta@gmail.com">sharamae.ureta@gmail.com</a>
-          </div>
-          <div>
-            <h3>LinkedIn</h3>
-            <a href="https://ph.linkedin.com/in/shara-mae-ureta-826065359">Shara Mae Ureta LinkedIn Profile</a>
-          </div>
-          <div>
-            <h3>Download my CV</h3>
-            <a href="/cv/Shara-Mae-Ureta-CV.pdf" target="_blank">Shara Mae Ureta CV</a>
-          </div>
+          <div class="contact-item">
+            <div class="contact-header">
+              <iconify-icon icon="lucide:mail" class="contact-icon"></iconify-icon>
+              <h3>Email</h3>
+            </div>
+            <a href="mailto:sharamae.ureta@gmail.com">
+              sharamae.ureta@gmail.com
+            </a>
+            </div>
+
+            <div class="contact-item">
+            <div class="contact-header">
+              <iconify-icon icon="lucide:linkedin" class="contact-icon"></iconify-icon>
+              <h3>LinkedIn</h3>
+            </div>
+            <a href="https://ph.linkedin.com/in/shara-mae-ureta-826065359" target="_blank" rel="noopener noreferrer">
+              Shara Mae Ureta LinkedIn Profile
+            </a>
+            </div>
+
+            <div class="contact-item">
+            <div class="contact-header">
+              <iconify-icon icon="lucide:file-text" class="contact-icon"></iconify-icon>
+              <h3>Download my CV</h3>
+            </div>
+            <a href="/cv/Shara-Mae-Ureta-CV.pdf" target="_blank" rel="noopener noreferrer">
+              Shara Mae Ureta CV
+            </a>
+            </div>
+
         </div>
       </div>
     </section>
@@ -37,22 +54,79 @@ import Header from "../components/Header.astro";
 
 <style>
   .contact-text {
-    margin-bottom: 1.5rem;
-    color: var(--text-muted);
-  }
+  margin-bottom: 1.5rem;
+  color: var(--text-muted);
+  text-align: center;
+  line-height: 1.6;
+}
 
-  .contact-items {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 2.5rem;
-    justify-content: center;
-  }
+.contact-items {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+  max-width: 520px;
+  margin: 0 auto;
+}
 
-  .contact-items h3 {
-    margin-bottom: 0.3rem;
-  }
+/* Card */
+.contact-item {
+  padding: 1rem 1.1rem;
+  border-radius: 0.9rem;
+  background: rgba(15, 23, 42, 0.55);
+  border: 1px solid rgba(236, 95, 169, 0.25);
+  transition: border-color 0.25s ease, transform 0.2s ease, box-shadow 0.25s ease;
 
-  .contact-items a {
-    font-size: 0.95rem;
+  /* ✅ center everything inside the card */
+  text-align: center;
+}
+
+.contact-item:hover {
+  border-color: rgba(236, 95, 169, 0.65);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(5, 6, 23, 0.7);
+}
+
+/* Icon + Label inline AND centered */
+.contact-header {
+  display: inline-flex;          /* ✅ shrink to content */
+  align-items: center;
+  justify-content: center;       /* ✅ center the row */
+  gap: 0.35rem;                  /* tight like your circle */
+}
+
+/* Icon */
+.contact-icon {
+  font-size: 18px;
+  color: var(--accent);
+}
+
+/* Label */
+.contact-item h3 {
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+/* Link/value centered (inherits text-align:center) */
+.contact-item a {
+  display: block;
+  margin-top: 0.35rem;
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.2s ease;
+  word-break: break-word;
+}
+
+.contact-item a:hover {
+  color: var(--accent);
+}
+
+/* Mobile: slightly tighter padding */
+@media (max-width: 640px) {
+  .contact-item {
+    padding: 0.9rem 1rem;
   }
+}
+
+
 </style>

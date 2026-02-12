@@ -1,5 +1,5 @@
 ---
-const { title, icon, client, role, tech, summary, tags } = Astro.props;
+const { title, icon, client, role, tech, summary, tags, useCase } = Astro.props;
 ---
 
 <article class="card-panel project-card">
@@ -34,10 +34,123 @@ const { title, icon, client, role, tech, summary, tags } = Astro.props;
 
   <!-- Tags -->
   <div class="project-tags">
-    {tags.map((tag) => (
+    {(tags ?? []).map((tag) => (
       <span class="tag-pill">{tag}</span>
     ))}
   </div>
+
+  {useCase && (
+    <details class="use-case">
+      <summary>View Use Case & Architecture</summary>
+
+      <div class="use-case-content">
+        {useCase?.opportunity && (
+          <>
+            <h4>Opportunity</h4>
+            <p>{useCase.opportunity}</p>
+          </>
+        )}
+
+        {useCase?.objective && (
+          <>
+            <h4>Objective</h4>
+            <p>{useCase.objective}</p>
+          </>
+        )}
+
+        {(useCase?.goals ?? useCase?.keyGoals)?.length ? (
+          <>
+            <h4>Key Goals</h4>
+            <ul>
+              {(useCase.goals ?? useCase.keyGoals).map((goal) => (
+                <li>{goal}</li>
+              ))}
+            </ul>
+          </>
+        ) : null}
+
+        {useCase?.workflow?.length ? (
+          <>
+            <h4>Workflow Overview</h4>
+            <ul>
+              {useCase.workflow.map((step) => (
+                <li>{step}</li>
+              ))}
+            </ul>
+          </>
+        ) : null}
+
+        {/* eFax-style services list */}
+        {useCase?.services?.length ? (
+          <>
+            <h4>Services &amp; Architecture</h4>
+            <ul>
+              {useCase.services.map((service) => (
+                <li>{service}</li>
+              ))}
+            </ul>
+          </>
+        ) : null}
+
+        {/* Qualcomm-style architecture object */}
+        {useCase?.architecture?.components?.length ? (
+          <>
+            <h4>Technical Architecture</h4>
+            {useCase.architecture.overview && <p>{useCase.architecture.overview}</p>}
+            <ul>
+              {useCase.architecture.components.map((comp) => (
+                <li>{comp}</li>
+              ))}
+            </ul>
+          </>
+        ) : null}
+
+        {/* XR initiatives */}
+        {useCase?.initiatives?.length ? (
+          <>
+            <h4>Key Initiatives</h4>
+            {useCase.initiatives.map((init) => (
+              <div class="initiative-block">
+                <h5>{init.name}</h5>
+                <p>{init.description}</p>
+
+                {init.highlights?.length ? (
+                  <ul>
+                    {init.highlights.map((h) => (
+                      <li>{h}</li>
+                    ))}
+                  </ul>
+                ) : null}
+              </div>
+            ))}
+          </>
+        ) : null}
+
+        {/* Optional: benefits / impact */}
+        {useCase?.benefits?.length ? (
+          <>
+            <h4>Benefits</h4>
+            <ul>
+              {useCase.benefits.map((b) => (
+                <li>{b}</li>
+              ))}
+            </ul>
+          </>
+        ) : null}
+
+        {useCase?.impact?.length ? (
+          <>
+            <h4>Impact</h4>
+            <ul>
+              {useCase.impact.map((i) => (
+                <li>{i}</li>
+              ))}
+            </ul>
+          </>
+        ) : null}
+      </div>
+    </details>
+  )}
 </article>
 
 <style>
@@ -76,5 +189,51 @@ const { title, icon, client, role, tech, summary, tags } = Astro.props;
     font-size: 1.1rem;
     color: var(--accent);
     flex-shrink: 0;
+    }
+
+    .use-case {
+      margin-top: 1rem;
+      border-top: 1px solid rgba(236, 95, 169, 0.3);
+      padding-top: 0.75rem;
+    }
+
+    .use-case summary {
+      cursor: pointer;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+
+    .use-case-content {
+      margin-top: 0.75rem;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .use-case-content h4 {
+      margin-top: 1rem;
+      margin-bottom: 0.3rem;
+      font-size: 0.85rem;
+      color: #f9fafb;
+    }
+
+    .use-case-content ul {
+      padding-left: 1.2rem;
+      margin: 0.5rem 0;
+    }
+
+    .initiative-block {
+      margin-bottom: 1.25rem;
+      padding: 0.8rem 1rem;
+      border-left: 2px solid rgba(236, 95, 169, 0.4);
+      background: rgba(15, 23, 42, 0.4);
+      border-radius: 0.5rem;
+    }
+
+    .initiative-block h5 {
+      margin: 0 0 0.4rem;
+      font-size: 0.95rem;
     }
 </style>

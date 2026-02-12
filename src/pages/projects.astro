@@ -5,34 +5,180 @@ import ProjectCard from "../components/ProjectCard.astro";
 
 const projects = [
   {
-    title: "eFax Automation for Healthcare",
-    icon: "lucide:brain-circuit",
-    client: "Providence St. Joseph Health",
-    role: "Application Developer · Data Engineer · DevOps",
-    tags: ["AI Engineer", "Backend", "Healthcare"],
-    tech: "Python, FastAPI, Azure OpenAI, Azure AI Search, Azure AI Document Intelligence, PostgreSQL, Azure Blob Storage, pytest",
-    summary:
-      "Designed and implemented an AI-driven document ingestion and classification solution for healthcare eFax workflows. Built FastAPI services integrating document scanning, similarity search, and LLM-based extraction, with data stored securely in PostgreSQL and Azure Blob."
+  title: "eFax Automation for Healthcare",
+  icon: "lucide:brain-circuit",
+  client: "Providence St. Joseph Health",
+  role: "Application Developer · Data Engineer · DevOps",
+  tags: ["AI Engineer", "Backend", "Healthcare"],
+  tech: "Python, FastAPI, Azure OpenAI, Azure AI Search, Azure AI Document Intelligence, PostgreSQL, Azure Blob Storage, pytest",
+  summary:
+    "Designed and implemented an AI-driven document ingestion and classification solution for healthcare eFax workflows.",
+  
+  useCase: {
+    opportunity: `
+    To help address workforce shortages and reduce caregiver burnout, Providence explored automation of manual faxed referrals that were causing delays and inefficiencies in patient scheduling.
+        `,
+        objective: `
+    Streamline the referral intake process by minimizing manual work and improving the patient experience.
+        `,
+        goals: [
+          "Automated identification, labeling, and processing of faxed referrals",
+          "Direct population of extracted data into Epic referral forms",
+          "Reduced call volume and faster scheduling workflows"
+        ],
+        workflow: [
+          "Document fetching and ingestion from external systems",
+          "Document splitting for uncertain status",
+          "OCR processing for text and metadata extraction",
+          "Duplicate detection using vector similarity search",
+          "AI-based classification and referral metadata extraction",
+          "Database updates and workflow orchestration",
+          "Cleanup and index management"
+        ],
+        services: [
+          "PreprocessService – document fetching and splitting",
+          "PostgreSQLService – database interaction",
+          "OCRService – optical character recognition",
+          "OpenAIService – classification and metadata extraction",
+          "AISearchService – vector search indexing",
+          "StorageService – blob storage handling"
+        ]
+    }
   },
   {
     title: "Agentic AI Laptop Refresh",
-    icon: "lucide:cpu",
+    icon: "lucide:laptop",
     client: "Qualcomm Inc.",
     role: "Application Developer",
     tags: ["AI Engineer", "Microsoft 365"],
-    tech: "Copilot Studio, Power Automate, ServiceNow, Adaptive Cards",
+    tech: "Copilot Studio, Power Automate, ServiceNow, Adaptive Cards, Dataverse",
     summary:
-      "Configured orchestration and connected agents in Copilot Studio to support laptop refresh journeys. Integrated Power Automate flows with ServiceNow, built Q&A and policy KB experiences, and delivered Adaptive Card-based UI for end-users."
+      "Designed and configured an agentic automation solution to modernize Qualcomm’s laptop refresh lifecycle using Copilot Studio, Power Automate, and ServiceNow integration.",
+
+    useCase: {
+      opportunity:
+        "Qualcomm aims to automate its Laptop Refresh Process using a Copilot Studio Agent integrated with Power Automate and ServiceNow to reduce manual IT coordination and improve employee experience.",
+
+      objective:
+        "Streamline device refresh workflows by proactively engaging eligible employees, orchestrating backend processes, and reducing annual manual intervention by IT administrators.",
+
+      goals: [
+        "Proactive identification of refresh-eligible employees",
+        "Automated conversational engagement via Teams/Copilot",
+        "End-to-end orchestration across logistics, audit, security, and provisioning",
+        "Scalable architecture for enterprise-wide rollout"
+      ],
+
+      workflow: [
+        "Recurring flow identifies eligible employees via scheduled job",
+        "Copilot Studio agent initiates proactive chat engagement",
+        "User selects actions: device readiness, audit check, delivery scheduling",
+        "Orchestrator agent coordinates sub-agents (Audit, Logistics, Asset, Security, Policy)",
+        "Power Automate integrates with ServiceNow and enterprise systems",
+        "Status updates tracked via Dataverse and monitoring flows",
+        "Improved employee experience through consistent and intelligent IT engagement",
+        "Reduced manual coordination by IT teams",
+        "Higher operational efficiency and traceability",
+        "Foundation for scalable enterprise automation initiatives"
+      ],
+
+      services: [
+        
+          "The solution follows an agentic orchestration model combining Copilot Studio, Power Automate flows, Azure Functions, and ServiceNow integration.",
+          "Copilot Studio – Conversational agent and user engagement",
+          "Power Automate – Workflow orchestration and backend triggers",
+          "ServiceNow – Ticketing and provisioning integration",
+          "Dataverse – Workflow and state tracking",
+          "Azure Functions – Scheduled employee eligibility sync",
+          "Agent Framework – Audit, Logistics, Asset, Security, and Policy sub-agents"
+      ]
+    }
   },
   {
     title: "Metaverse & XR Initiatives",
     icon: "lucide:layers",
     client: "ATCP / Avanade CTO",
-    role: "XR Developer (Unity & Mesh)",
-    tags: ["Full-Stack", "XR"],
-    tech: "Unity, Microsoft Mesh, C#, Azure Services",
+    role: "XR Developer (Unity & Microsoft Mesh)",
+    tags: ["XR", "Metaverse", "Full-Stack"],
+    tech: "Unity, Microsoft Mesh, Azure Services, C#, Generative AI, Speech Services",
     summary:
-      "Led XR projects including a mangrove restoration site using VR with Moon Phase and Tides API, and enterprise Metaverse POCs. Created reusable scripts, visual scripting, and cloud-connected experiences for sustainability-related scenarios."
+      "Led and delivered immersive Microsoft Mesh and XR initiatives across retail, healthcare, learning, and enterprise innovation scenarios.",
+
+    useCase: {
+      opportunity:
+        "Organizations explored Microsoft Mesh and immersive XR environments to improve collaboration, learning, retail engagement, and clinical innovation through secure and scalable virtual experiences.",
+
+      objective:
+        "Design and build immersive proof-of-concepts and production-ready XR environments leveraging Microsoft Mesh, Azure, and Unity to demonstrate real-world enterprise value.",
+
+      initiatives: [
+        {
+          name: "Microsoft Mesh Demo Worlds",
+          description:
+            "Built and tested collaborative demo environments to showcase Microsoft Mesh capabilities in mixed reality collaboration.",
+          highlights: [
+            "End-to-end testing of Microsoft Mesh toolkits",
+            "Integration with Generative AI services",
+            "Visual & cloud scripting integration",
+            "Advanced animations, physics, and user interactions",
+            "Speech and text service integration"
+          ]
+        },
+        {
+          name: "MetaCartXR – XR Sales & Marketing",
+          description:
+            "Developed an immersive retail metaverse experience enabling users to browse and interact with products in a virtual showroom.",
+          highlights: [
+            "Virtual product exploration and interaction",
+            "Digital twin modeling for appliances",
+            "Secure integration with enterprise systems",
+            "Scalable architecture for commercial rollout"
+          ]
+        },
+        {
+          name: "LifeWorks VR – B2B Mental Health (Microsoft Mesh)",
+          description:
+            "Designed a proof-of-concept metaverse experience to support clinical exposure therapy and mental health innovation.",
+          highlights: [
+            "Design sprint with clinical and business stakeholders",
+            "Virtual environments for exposure therapy use cases",
+            "Secure therapist-guided immersive experiences",
+            "Narrative demo environments for executive presentation"
+          ]
+        },
+        {
+          name: "Expert Learning Lab – Microsoft Mesh",
+          description:
+            "Created immersive learning and team-building environments to enhance collaboration and virtual training.",
+          highlights: [
+            "Interactive VR learning simulations",
+            "Cross-platform integration with Teams and Azure",
+            "Support for multiple VR/AR devices",
+            "Scalable enterprise learning architecture"
+          ]
+        }
+      ],
+
+      architecture: {
+        overview:
+          "All XR initiatives leveraged Microsoft Mesh and Unity integrated with Azure cloud services to provide secure, scalable, and interactive immersive environments.",
+        components: [
+          "Microsoft Mesh – Collaborative mixed reality environments",
+          "Unity – 3D world development and interaction logic",
+          "Azure Services – Identity, storage, and backend integration",
+          "Generative AI Services – AI-driven content and interaction",
+          "Speech & Text Services – Real-time conversational experiences",
+          "Cloud & Visual Scripting – Modular and scalable architecture"
+        ]
+      },
+
+      impact: [
+        "Accelerated executive understanding of Metaverse potential",
+        "Enabled innovative clinical treatment prototypes",
+        "Improved immersive retail engagement concepts",
+        "Advanced enterprise learning and collaboration models"
+      ]
+    }
   },
   {
     title: "Modern Workplace Capability",
