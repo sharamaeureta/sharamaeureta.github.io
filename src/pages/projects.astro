@@ -5,44 +5,59 @@ import ProjectCard from "../components/ProjectCard.astro";
 
 const projects = [
   {
-  title: "eFax Automation for Healthcare",
-  icon: "lucide:brain-circuit",
-  client: "Providence St. Joseph Health",
-  role: "Application Developer · Data Engineer · DevOps",
-  tags: ["AI Engineer", "Backend", "Healthcare"],
-  tech: "Python, FastAPI, Azure OpenAI, Azure AI Search, Azure AI Document Intelligence, PostgreSQL, Azure Blob Storage, pytest",
-  summary:
-    "Designed and implemented an AI-driven document ingestion and classification solution for healthcare eFax workflows.",
-  
-  useCase: {
-    opportunity: `
-    To help address workforce shortages and reduce caregiver burnout, Providence explored automation of manual faxed referrals that were causing delays and inefficiencies in patient scheduling.
-        `,
-        objective: `
-    Streamline the referral intake process by minimizing manual work and improving the patient experience.
-        `,
-        goals: [
-          "Automated identification, labeling, and processing of faxed referrals",
-          "Direct population of extracted data into Epic referral forms",
-          "Reduced call volume and faster scheduling workflows"
-        ],
-        workflow: [
-          "Document fetching and ingestion from external systems",
-          "Document splitting for uncertain status",
-          "OCR processing for text and metadata extraction",
-          "Duplicate detection using vector similarity search",
-          "AI-based classification and referral metadata extraction",
-          "Database updates and workflow orchestration",
-          "Cleanup and index management"
-        ],
-        services: [
-          "PreprocessService – document fetching and splitting",
-          "PostgreSQLService – database interaction",
-          "OCRService – optical character recognition",
-          "OpenAIService – classification and metadata extraction",
-          "AISearchService – vector search indexing",
-          "StorageService – blob storage handling"
+    title: "Agentic AI Census Management POC",
+    icon: "lucide:workflow",
+    client: "AON Corporation",
+    role: "AI Engineer · Backend Engineer",
+    tags: ["AI Engineer", "Backend", "Insurance"],
+    tech: "Semantic Kernel, AI Agents (AI Foundry), Azure OpenAI, Azure Functions, Python, Power Automate, Cosmos DB, Azure Storage",
+    summary:
+      "Built a multi-agent orchestration platform for automating census management across emails, spreadsheets, and carrier invoices, with Cosmos DB as the source of truth.",
+    useCase: {
+      opportunity:
+        "Benefits and insurance teams needed a reliable way to consolidate census data from multiple sources while reducing manual reconciliation effort.",
+      objective:
+        "Automate end-to-end census processing using a fleet of kernel-based agents that parse, validate, reconcile, and summarize member data into Cosmos DB.",
+      keyFeatures: [
+        "Multi-source ingestion from email (.eml/.msg), Excel (.xlsx), and carrier invoices",
+        "AI-powered extraction and intent recognition for Joiner/Mover/Leaver events",
+        "Automated policy evaluation for eligibility, coverage, and premium computation",
+        "Invoice reconciliation against master data with discrepancy reporting",
+        "Per-field and per-record confidence scoring",
+        "Automated outbound communications summarizing each orchestration run"
+      ],
+      services: [
+        "Email Parser Agent – parses .eml files from Azure Blob Storage and extracts structured data using Azure OpenAI",
+        "Document Parser Agent – parses Excel files and returns cleaned structured output",
+        "Data Intent Recognizer Agent – determines Joiner/Mover/Leaver intent for each record",
+        "Data Formatter Agent – normalizes extracted data into standardized JSON",
+        "Field Data Validator Agent – validates mandatory fields (DOB, salary, ID, currency, etc.)",
+        "Policy Eligibility Evaluation Agent – computes coverage and premiums using policy rules",
+        "Data Mapper Agent – maps email data into Cosmos DB member records",
+        "Process Summarizer Agent – aggregates counts of processed and failed records",
+        "Communications Agent – composes summary emails using Azure OpenAI",
+        "Orchestrator Agent – coordinates the full census data management flow",
+        "Reconciler Super Agent – performs invoice reconciliation and discrepancy analysis",
+        "XLSX Generator Agent – outputs reconciled Excel files back to Blob Storage"
+      ],
+      designPrinciples: [
+        "Single responsibility – each agent handles exactly one task to simplify testing and evolution",
+        "Asynchronous processing – agents support concurrent workloads for scale",
+        "Semantic Kernel integration – consistent use of @kernel_function for agent definitions",
+        "Error isolation – failures are contained at the agent level and do not crash the entire system",
+        "JSON-based communication – structured payloads passed between orchestration stages"
+      ],
+      architecture: {
+        overview:
+          "An Azure-hosted multi-agent system built with Semantic Kernel, Azure Functions, Blob Storage, and Cosmos DB, orchestrated via Power Automate.",
+        components: [
+          "Azure Blob Storage for email, census files, and carrier invoices",
+          "Azure Functions hosting Semantic Kernel agents",
+          "Cosmos DB as the master member and census data store",
+          "Power Automate flows to trigger mock inboxes and orchestration jobs",
+          "Agent Supervisor workbench and dashboards for monitoring and reconciliation"
         ]
+      }
     }
   },
   {
@@ -92,6 +107,94 @@ const projects = [
           "Azure Functions – Scheduled employee eligibility sync",
           "Agent Framework – Audit, Logistics, Asset, Security, and Policy sub-agents"
       ]
+    }
+  },
+  {
+    title: "Project HERMES – HR Copilot & Case Automation",
+    icon: "lucide:messages-square",
+    client: "HR & Employee Services POC",
+    role: "AI Engineer · Microsoft 365 Developer",
+    tags: ["Copilot Studio", "Teams", "Automation"],
+    tech: "Copilot Studio, Microsoft Teams, OpenAI, AI Search, Language Services, Azure Functions, ServiceNow, Document Intelligence, SharePoint Lists, Adaptive Cards",
+    summary:
+      "Built an intelligent HR assistant in Microsoft Teams that orchestrates Q&A, ticketing, leave filing, claims, and onboarding through Copilot Studio and Azure Functions.",
+    useCase: {
+      opportunity:
+        "HR teams needed a single conversational entry point in Teams to handle policy questions, leave, claims, and ServiceNow tickets without users jumping between tools.",
+      objective:
+        "Deliver an AI-powered HR copilot (Hermes) that routes each request to the right back-end system while providing grounded, explainable responses.",
+      features: [
+        "Teams-based option selector for HR policy, ticketing, claims, leave, and enrollment journeys",
+        "Context-aware responses powered by OpenAI and AI Search over HR documents",
+        "Citation panel with source files for each answer",
+        "Follow-up questions and translations to keep the conversation flowing",
+        "Adaptive Card forms for claims, leave filing, and onboarding flows",
+        "Automatic ServiceNow incident/request creation from chat",
+        "Expense reimbursement and leave approval summaries surfaced in Teams"
+      ],
+      workflow: [
+        "User interacts with Hermes in Teams via Copilot Studio topics and option selector cards",
+        "Azure Functions route each request to OpenAI, AI Search, Language Services, or line-of-business APIs",
+        "HR knowledge content is indexed via AI Search and Document Intelligence",
+        "ServiceNow, SharePoint, and other systems are updated through Power Automate and Adaptive Cards",
+        "Hermes returns a rich card with responses, citations, and next-step suggestions"
+      ],
+      architecture: {
+        overview:
+          "Hermes is an extensible AI search and orchestration framework that connects Teams with Copilot Studio, Azure Functions, OpenAI, AI Search, Language Services, ServiceNow, and SharePoint.",
+        components: [
+          "Microsoft Teams + Copilot Studio as the primary conversational interface",
+          "Azure Functions as the central router for tool and service calls",
+          "OpenAI for generative and grounded responses",
+          "Azure AI Search over HR and policy content",
+          "Language Services for intent detection, sentiment, and translation",
+          "Azure Data Factory and Document Intelligence for ingesting structured and unstructured data",
+          "ServiceNow for ticket creation and workflow execution",
+          "SharePoint Lists and other line-of-business stores for configuration and transactions",
+          "Adaptive Cards for interactive forms and confirmation screens in Teams"
+        ]
+      }
+    }
+  },
+  {
+  title: "eFax Automation for Healthcare",
+  icon: "lucide:brain-circuit",
+  client: "Providence St. Joseph Health",
+  role: "Application Developer · Data Engineer · DevOps",
+  tags: ["AI Engineer", "Backend", "Healthcare"],
+  tech: "Python, FastAPI, Azure OpenAI, Azure AI Search, Azure AI Document Intelligence, PostgreSQL, Azure Blob Storage, pytest",
+  summary:
+    "Designed and implemented an AI-driven document ingestion and classification solution for healthcare eFax workflows.",
+  
+  useCase: {
+    opportunity: `
+    To help address workforce shortages and reduce caregiver burnout, Providence explored automation of manual faxed referrals that were causing delays and inefficiencies in patient scheduling.
+        `,
+        objective: `
+    Streamline the referral intake process by minimizing manual work and improving the patient experience.
+        `,
+        goals: [
+          "Automated identification, labeling, and processing of faxed referrals",
+          "Direct population of extracted data into Epic referral forms",
+          "Reduced call volume and faster scheduling workflows"
+        ],
+        workflow: [
+          "Document fetching and ingestion from external systems",
+          "Document splitting for uncertain status",
+          "OCR processing for text and metadata extraction",
+          "Duplicate detection using vector similarity search",
+          "AI-based classification and referral metadata extraction",
+          "Database updates and workflow orchestration",
+          "Cleanup and index management"
+        ],
+        services: [
+          "PreprocessService – document fetching and splitting",
+          "PostgreSQLService – database interaction",
+          "OCRService – optical character recognition",
+          "OpenAIService – classification and metadata extraction",
+          "AISearchService – vector search indexing",
+          "StorageService – blob storage handling"
+        ]
     }
   },
   {
@@ -193,12 +296,18 @@ const projects = [
   {
     title: "Enterprise SharePoint & Web Migrations",
     icon: "lucide:database",
-    client: "NTT Data / BSP / ABS-CBN",
+    client: "NTT Data / Central Bank of the Philippines / ABS-CBN Corp",
     role: "Developer / Main Developer",
     tags: ["Backend", "Microsoft 365"],
     tech: "SharePoint On-Prem, SharePoint Online, Office 365, Web Development",
     summary:
-      "Delivered multiple migrations from legacy systems and websites to SharePoint and Office 365. Implemented support modules, handled content migration, and ensured a stable and maintainable modern workplace platform."
+      "Delivered multiple migrations from legacy systems and websites to SharePoint and Office 365. Implemented support modules, handled content migration, and ensured a stable and maintainable modern workplace platform.",
+    useCase: {
+      impact: {
+        text: "BSP's Enhanced Website Wins Central Banking Award",
+        link: "https://www.bsp.gov.ph/SitePages/MediaAndResearch/MediaDisp.aspx?ItemId=5715"
+      }
+    }
   }
 ];
 ---
